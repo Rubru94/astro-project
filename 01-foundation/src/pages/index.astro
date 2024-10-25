@@ -1,42 +1,30 @@
 ---
-import NavBar from "../components/NavBar.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 
 // code fence --> component script --> Server only
 
 const name = "John Doe";
-const title = "Home";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+<MainLayout title="Home Page">
+  <h1>{name}</h1>
 
-  <body>
-    <NavBar />
-    <h1>{name}</h1>
+  <p>Static Now date: {new Date().toLocaleTimeString()}</p>
+  <p id="scriptdate"></p>
 
-    <p>Static Now date: {new Date().toLocaleTimeString()}</p>
-    <p id="scriptdate"></p>
+  <footer>2020</footer>
 
-    <footer>2020</footer>
+  <script>
+    const currentYear: number = new Date().getFullYear();
+    const currentTime: string = new Date().toLocaleTimeString();
 
-    <script>
-      const currentYear: number = new Date().getFullYear();
-      const currentTime: string = new Date().toLocaleTimeString();
+    const dateParagraph = document.querySelector(
+      "#scriptdate"
+    ) as HTMLParagraphElement;
+    if (dateParagraph)
+      dateParagraph.innerText = `Script Now date: ${currentTime}`;
 
-      const dateParagraph = document.querySelector(
-        "#scriptdate"
-      ) as HTMLParagraphElement;
-      if (dateParagraph)
-        dateParagraph.innerText = `Script Now date: ${currentTime}`;
-
-      const footer = document.querySelector("footer") as HTMLElement;
-      if (footer) footer.innerText = `Current year: ${currentYear}`;
-    </script>
-  </body>
-</html>
+    const footer = document.querySelector("footer") as HTMLElement;
+    if (footer) footer.innerText = `Current year: ${currentYear}`;
+  </script>
+</MainLayout>
