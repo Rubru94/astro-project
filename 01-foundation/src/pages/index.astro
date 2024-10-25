@@ -13,6 +13,13 @@ const title = "Home";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+
   <body>
     <h1>{name}</h1>
 
@@ -35,4 +42,6 @@ const title = "Home";
       if (footer) footer.innerText = `Current year: ${currentYear}`;
     </script>
   </body>
+
+
 </html>
