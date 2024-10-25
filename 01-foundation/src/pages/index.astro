@@ -1,4 +1,6 @@
 ---
+import NavBar from "../components/NavBar.astro";
+
 // code fence --> component script --> Server only
 
 const name = "John Doe";
@@ -14,13 +16,8 @@ const title = "Home";
     <title>{title}</title>
   </head>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-  </nav>
-
   <body>
+    <NavBar />
     <h1>{name}</h1>
 
     <p>Static Now date: {new Date().toLocaleTimeString()}</p>
@@ -42,6 +39,4 @@ const title = "Home";
       if (footer) footer.innerText = `Current year: ${currentYear}`;
     </script>
   </body>
-
-
 </html>
