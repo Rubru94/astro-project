@@ -12,10 +12,7 @@ const name = "John Doe";
   <p>Static Now date: {new Date().toLocaleTimeString()}</p>
   <p id="scriptdate"></p>
 
-  <footer>2020</footer>
-
   <script>
-    const currentYear: number = new Date().getFullYear();
     const currentTime: string = new Date().toLocaleTimeString();
 
     const dateParagraph = document.querySelector(
@@ -23,8 +20,5 @@ const name = "John Doe";
     ) as HTMLParagraphElement;
     if (dateParagraph)
       dateParagraph.innerText = `Script Now date: ${currentTime}`;
-
-    const footer = document.querySelector("footer") as HTMLElement;
-    if (footer) footer.innerText = `Current year: ${currentYear}`;
   </script>
 </MainLayout>

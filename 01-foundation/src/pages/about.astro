@@ -1,7 +1,28 @@
 ---
+import CustomTitle from "../components/CustomTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="About Page">
-  <h1>About</h1>
+  <h1>About</h1><!-- color red -->
+
+  <CustomTitle title="Custom title" /><!-- color default -->
 </MainLayout>
+
+<!-- Style only for this scope  -->
+<style>
+  h1 {
+    color: red;
+  }
+</style>
+
+<!-- Style global  -->
+<!-- 
+
+<style is:global>
+  h1 {
+    color: red;
+  }
+</style>
+
+-->
