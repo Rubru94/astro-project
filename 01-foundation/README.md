@@ -45,3 +45,9 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+
+## 📔 Bibliography & Links
+
+[Astro docs](https://docs.astro.build/en/getting-started/)
+[HTML 404 Page Templates](https://dev.to/stackfindover/35-html-404-page-templates-5bge)
