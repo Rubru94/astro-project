@@ -112,12 +112,12 @@ const posts = await trpcAstro.post.getAll.query();
 
   const btn = document.querySelector("#create-btn");
   btn?.addEventListener("click", async () => {
-    const newPost = await trpcAstro.post.create.mutate({
+    await trpcAstro.post.create.mutate({
       title: "Example",
       author: "Jonh Doe",
       description: "Description",
       published: true,
     });
-    console.log(newPost);
+    window.location.reload();
   });
 </script>
