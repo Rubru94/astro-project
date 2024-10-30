@@ -4,26 +4,26 @@ import { trpcAstro } from "../client";
 const title = "Post Section";
 
 const posts = await trpcAstro.post.getAll.query();
-console.log(posts);
 ---
 
 <h3>{title}</h3>
 
-<div id="post-section"></div>
-
-{
-  posts.map(({ title, description }) => (
-    <div class="container">
-      <div class="top">
-        <img src="https://images.unsplash.com/photo-1679155506707-a072b305dd91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" />
-        <div class="top-text">
-          <p class="name">{title}</p>
-          <p class="details">{description}</p>
+<button id="create-btn" (click)="create()">Create</button>
+<div id="post-section">
+  {
+    posts.map(({ title, description }) => (
+      <div class="container">
+        <div class="top">
+          <img src="https://images.unsplash.com/photo-1679155506707-a072b305dd91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" />
+          <div class="top-text">
+            <p class="name">{title}</p>
+            <p class="details">{description}</p>
+          </div>
         </div>
       </div>
-    </div>
-  ))
-}
+    ))
+  }
+</div>
 
 <style>
   h1 {
@@ -109,4 +109,15 @@ console.log(posts);
 
   const posts = await trpcAstro.post.getAll.query();
   console.log(posts);
+
+  const btn = document.querySelector("#create-btn");
+  btn?.addEventListener("click", async () => {
+    const newPost = await trpcAstro.post.create.mutate({
+      title: "Example",
+      author: "Jonh Doe",
+      description: "Description",
+      published: true,
+    });
+    console.log(newPost);
+  });
 </script>
