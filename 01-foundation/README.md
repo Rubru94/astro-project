@@ -46,6 +46,19 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
+## 💻 Run dev environment
+
+1. Run mongo database
+
+```bash
+$ docker compose up -d
+```
+
+2. Start astro
+
+```bash
+$ npm run dev
+```
 
 ## 📔 Bibliography & Links
 
