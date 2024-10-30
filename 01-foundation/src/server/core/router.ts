@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { publicProcedure, router } from "./init";
-import { postRouter } from "./post/router";
+import { postRouter } from "../post/router";
 
 /**
  * https://trpc.io/docs/server/merging-routers

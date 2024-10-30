@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { publicProcedure, router } from "../init";
+import { publicProcedure, router } from "../core/init";
 import service from "./services/post.service";
 
 export const postRouter = router({
