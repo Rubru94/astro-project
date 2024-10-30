@@ -1,44 +1,16 @@
-import { initTRPC, TRPCError } from "@trpc/server";
 import { z } from "zod";
-// import { prisma } from "../lib/prisma";
-// import type { Comment } from "@prisma/client";
-import { dbConnection } from "./db";
-import type { Context } from "./context";
-import { Post } from "./post/models/post.model";
+import { publicProcedure, router } from "./init";
+import { postRouter } from "./post/router";
 
-export const t = initTRPC.context<Context>().create();
-
-export const middleware = t.middleware;
-export const publicProcedure = t.procedure;
-
-dbConnection();
-
-/* const isAdmin = middleware(async ({ ctx, next }) => {
-  if (!ctx.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-  return next({
-    ctx: {
-      user: ctx.user,
-    },
-  });
-});
-
-export const adminProcedure = publicProcedure.use(isAdmin); */
-
-export const appRouter = t.router({
+/**
+ * https://trpc.io/docs/server/merging-routers
+ */
+export const appRouter = router({
   getHello: publicProcedure.input(z.string()).query(async ({ input }) => {
     return `Hello ${input}!`;
   }),
 
-  getPosts: publicProcedure.query(async () => {
-    try {
-      const posts = await Post.find({});
-      return posts;
-    } catch (error) {
-      throw error;
-    }
-  }),
+  post: postRouter,
 
   /* getCommentsForBlog: publicProcedure
     .input(z.string())
