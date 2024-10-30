@@ -4,12 +4,14 @@ import { z } from "zod";
 // import type { Comment } from "@prisma/client";
 import { dbConnection } from "./db";
 import type { Context } from "./context";
-import mongoose from "mongoose";
+import { Post } from "./post/models/post.model";
 
 export const t = initTRPC.context<Context>().create();
 
 export const middleware = t.middleware;
 export const publicProcedure = t.procedure;
+
+dbConnection();
 
 /* const isAdmin = middleware(async ({ ctx, next }) => {
   if (!ctx.user) {
@@ -29,10 +31,14 @@ export const appRouter = t.router({
     return `Hello ${input}!`;
   }),
 
-  /* getPosts: publicProcedure.query(async () => {
-    // dbConnection();
-    return await mongoose.connection.db?.collection("post");
-  }), */
+  getPosts: publicProcedure.query(async () => {
+    try {
+      const posts = await Post.find({});
+      return posts;
+    } catch (error) {
+      throw error;
+    }
+  }),
 
   /* getCommentsForBlog: publicProcedure
     .input(z.string())

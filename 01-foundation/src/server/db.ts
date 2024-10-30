@@ -1,10 +1,14 @@
 import mongoose from "mongoose";
 
-const MONGO_DB_URI = "mongodb://localhost:27017/";
+if (!import.meta.env.MONGODB_URI) {
+  throw new Error('Invalid environment variable: "MONGODB_URI"');
+}
+
+const MONGODB_URI = import.meta.env.MONGODB_URI;
 
 const dbConnection = async (): Promise<void> => {
-  await mongoose.connect(MONGO_DB_URI);
-  console.log(`mongoose connected to ${MONGO_DB_URI}`);
+  await mongoose.connect(MONGODB_URI);
+  console.log(`Connected to database: ${MONGODB_URI}`);
 };
 
 export { dbConnection };
