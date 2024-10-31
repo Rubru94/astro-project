@@ -1,0 +1,217 @@
+---
+
+---
+
+<div class="container">
+  <button id="btn-create">Create Example</button>
+
+  <form id="new-post-form" name="new-post" action="" method="POST">
+    <h3>New Post</h3>
+
+    <fieldset>
+      <input
+        name="title"
+        placeholder="Title"
+        type="text"
+        tabindex="1"
+        required
+        autofocus
+      />
+    </fieldset>
+
+    <fieldset>
+      <input
+        name="author"
+        placeholder="Author"
+        type="text"
+        tabindex="2"
+        required
+      />
+    </fieldset>
+
+    <fieldset>
+      <textarea
+        name="description"
+        placeholder="Type your description here...."
+        tabindex="3"
+        required
+      >
+      </textarea>
+    </fieldset>
+    <fieldset>
+      <button
+        name="submit"
+        type="submit"
+        id="post-submit"
+        data-submit="...Sending">Submit</button
+      >
+    </fieldset>
+  </form>
+</div>
+
+<style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+
+  .container {
+    max-width: 470px;
+    width: 100%;
+    margin: 2em;
+    position: relative;
+  }
+
+  #new-post-form input[type="text"],
+  #new-post-form input[type="email"],
+  #new-post-form input[type="tel"],
+  #new-post-form input[type="url"],
+  #new-post-form textarea,
+  #new-post-form button[type="submit"] {
+    font:
+      400 12px/16px "Roboto",
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+
+  #new-post-form {
+    background: #f9f9f9;
+    padding: 25px;
+    margin: 0;
+    box-shadow:
+      0 0 20px 0 rgba(0, 0, 0, 0.2),
+      0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  #new-post-form h3 {
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  #new-post-form h4 {
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+
+  #new-post-form input[type="text"],
+  #new-post-form input[type="email"],
+  #new-post-form input[type="tel"],
+  #new-post-form input[type="url"],
+  #new-post-form textarea {
+    width: 98%;
+    border: 1px solid #ccc;
+    background: #fff;
+    margin: 0 0 5px;
+    padding: 10px 0px 10px 5px;
+  }
+
+  #new-post-form input[type="text"]:hover,
+  #new-post-form input[type="email"]:hover,
+  #new-post-form input[type="tel"]:hover,
+  #new-post-form input[type="url"]:hover,
+  #new-post-form textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+  }
+
+  #new-post-form textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+  }
+
+  #new-post-form button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #4caf50;
+    color: #fff;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  #new-post-form button[type="submit"]:hover {
+    background: #43a047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #new-post-form button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .copyright {
+    text-align: center;
+  }
+
+  #new-post-form input:focus,
+  #new-post-form textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #888;
+  }
+
+  :-moz-placeholder {
+    color: #888;
+  }
+
+  ::-moz-placeholder {
+    color: #888;
+  }
+
+  :-ms-input-placeholder {
+    color: #888;
+  }
+</style>
+
+<script>
+  import { trpcAstro } from "../../client";
+
+  const createBtn = document.querySelector("#btn-create");
+  createBtn?.addEventListener("click", async () => {
+    await trpcAstro.post.create.mutate({
+      title: "Example",
+      author: "Jonh Doe",
+      description: "Description",
+      published: true,
+    });
+    window.location.reload();
+  });
+
+  const form = document.querySelector("form") as any;
+  form.onsubmit = async function () {
+    const title = (
+      document.querySelector("input[name=title]") as HTMLInputElement
+    ).value;
+    const author = (
+      document.querySelector("input[name=author]") as HTMLInputElement
+    ).value;
+    const description = (
+      document.querySelector("textarea") as HTMLTextAreaElement
+    ).value;
+    await trpcAstro.post.create.mutate({
+      title,
+      author,
+      description,
+      published: true,
+    });
+    return false;
+  };
+</script>
