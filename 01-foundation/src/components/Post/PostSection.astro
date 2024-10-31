@@ -1,5 +1,6 @@
 ---
-import { trpcAstro } from "../client";
+import { trpcAstro } from "../../client";
+import ButtonDelete from "./ButtonDelete.astro";
 
 const title = "Post Section";
 
@@ -8,18 +9,21 @@ const posts = await trpcAstro.post.getAll.query();
 
 <h3>{title}</h3>
 
-<button id="create-btn" (click)="create()">Create</button>
+<button id="btn-create">Create</button>
 <div id="post-section">
   {
-    posts.map(({ title, description }) => (
-      <div class="container">
+    posts.map(({ _id, title, description }) => (
+      <div id={_id} class="container">
         <div class="top">
           <img src="https://images.unsplash.com/photo-1679155506707-a072b305dd91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" />
           <div class="top-text">
+            <span>{_id}</span>
             <p class="name">{title}</p>
             <p class="details">{description}</p>
           </div>
         </div>
+
+        <ButtonDelete id={_id} />
       </div>
     ))
   }
@@ -99,10 +103,30 @@ const posts = await trpcAstro.post.getAll.query();
     margin-left: 15px;
     margin-top: 10px;
   }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 1px solid lighten(gray, 24%);
+    height: 48px;
+    padding: 0 24px 0 16px;
+    letter-spacing: 0.25px;
+    border-radius: 24px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    .mdi {
+      margin-right: 8px;
+    }
+  }
 </style>
 
 <script>
-  import { trpcAstro } from "../client";
+  import { trpcAstro } from "../../client";
 
   const greeting = await trpcAstro.getHello.query("foo");
   console.log(greeting);
@@ -110,14 +134,18 @@ const posts = await trpcAstro.post.getAll.query();
   const posts = await trpcAstro.post.getAll.query();
   console.log(posts);
 
-  const btn = document.querySelector("#create-btn");
-  btn?.addEventListener("click", async () => {
+  const reload = () => {
+    window.location.reload();
+  };
+
+  const createBtn = document.querySelector("#btn-create");
+  createBtn?.addEventListener("click", async () => {
     await trpcAstro.post.create.mutate({
       title: "Example",
       author: "Jonh Doe",
       description: "Description",
       published: true,
     });
-    window.location.reload();
+    reload();
   });
 </script>

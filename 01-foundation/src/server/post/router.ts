@@ -23,4 +23,12 @@ export const postRouter = router({
       }
       return { status: "success" };
     }),
+  delete: publicProcedure.input(z.string()).mutation(async ({ input }) => {
+    try {
+      await service.delete(input);
+    } catch (err) {
+      return { status: "error", error: err };
+    }
+    return { status: "success" };
+  }),
 });

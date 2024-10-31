@@ -54,6 +54,7 @@ class PostService {
 
   async delete(id: string): Promise<IPost> {
     try {
+      console.log(id);
       const post = await Post.findByIdAndDelete(id);
       if (!post) throw new Error("Post not available");
       return post;
