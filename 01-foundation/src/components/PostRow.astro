@@ -1,0 +1,15 @@
+---
+import type { PostItem } from "../data/types";
+
+interface Props {
+  item: PostItem;
+}
+
+const { item } = Astro.props;
+---
+
+<tr>
+  <td>{item.title}</td>
+  <td>{item.description}</td>
+  <td>{item.author}</td>
+</tr>

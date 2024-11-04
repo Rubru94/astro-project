@@ -1,0 +1,44 @@
+---
+import gql from "graphql-tag";
+import MainLayout from "../layouts/MainLayout.astro";
+import client from "../lib/ apollo-client";
+import type { PostItem } from "../data/types";
+import PostRow from "../components/PostRow.astro";
+
+const { data, loading } = await client.query({
+  query: gql`
+    query ShoppingCart {
+      post {
+        title
+        description
+        author
+      }
+    }
+  `,
+});
+
+const postItems: Array<PostItem> = data.post;
+---
+
+<MainLayout title="Post Page">
+  {loading && <p>Loading posts...</p>}
+
+  {
+    !loading && (
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          {postItems.map((item) => (
+            <PostRow item={item} />
+          ))}
+        </tbody>
+      </table>
+    )
+  }
+</MainLayout>
