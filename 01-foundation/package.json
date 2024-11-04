@@ -7,10 +7,12 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "serve": "node ./dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/node": "^8.3.4",
     "@trpc/client": "^10.45.2",
     "@trpc/server": "^10.45.2",
     "astro": "^4.16.7",
@@ -18,5 +20,6 @@
     "mongoose": "^8.7.3",
     "typescript": "^5.6.3",
     "zod": "^3.23.8"
-  }
+  },
+  "devDependencies": {}
 }

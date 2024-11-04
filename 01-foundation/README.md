@@ -60,6 +60,32 @@ $ docker compose up -d
 $ npm run dev
 ```
 
+## 💻 Run prod environment
+
+1. Run mongo database
+
+```bash
+$ docker compose up -d
+```
+
+2. Start astro
+
+```bash
+$ npm run dev
+```
+
+3. Build in another terminal
+
+```bash
+$ npm run build
+```
+
+4. Serve
+
+```bash
+$ npm run serve
+```
+
 ## 📔 Bibliography & Links
 
 - [Astro docs](https://docs.astro.build/en/getting-started/)
