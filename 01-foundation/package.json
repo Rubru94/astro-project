@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "serve": "node ./dist/server/entry.mjs"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
