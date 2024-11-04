@@ -46,8 +46,16 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
+## 💻 Run dev environment
+
+1. Start astro
+
+```bash
+$ npm run dev
+```
 
 ## 📔 Bibliography & Links
 
-[Astro docs](https://docs.astro.build/en/getting-started/)
-[HTML 404 Page Templates](https://dev.to/stackfindover/35-html-404-page-templates-5bge)
+- [Astro docs](https://docs.astro.build/en/getting-started/)
+- [HTML 404 Page Templates](https://dev.to/stackfindover/35-html-404-page-templates-5bge)
+- [How to build a fullstack Astro website with GraphQL](https://robkendal.co.uk/blog/how-to-build-astro-site-with-graphql/#building-out-the-fullstack-app-with-astro-and-graphql)

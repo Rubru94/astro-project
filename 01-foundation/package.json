@@ -10,8 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.7",
+    "@apollo/client": "^3.11.8",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/node": "^8.3.4",
+    "astro": "^4.16.7",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-yoga": "^5.8.0",
     "typescript": "^5.6.3"
   }
 }
