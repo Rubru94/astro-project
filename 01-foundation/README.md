@@ -48,7 +48,13 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## 💻 Run dev environment
 
-1. Start astro
+1. Run mongo database
+
+```bash
+$ docker compose up -d
+```
+
+2. Start astro
 
 ```bash
 $ npm run dev
