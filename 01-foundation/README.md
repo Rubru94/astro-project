@@ -86,6 +86,14 @@ $ npm run build
 $ npm run serve
 ```
 
+## 💻 Public port with ngrok
+
+1. Make mongo container port public
+
+```bash
+$ ngrok tcp 27017
+```
+
 ## 📔 Bibliography & Links
 
 - [Astro docs](https://docs.astro.build/en/getting-started/)
