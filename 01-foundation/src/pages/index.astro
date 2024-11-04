@@ -4,6 +4,8 @@ import MainLayout from "../layouts/MainLayout.astro";
 // code fence --> component script --> Server only
 
 const name = "John Doe";
+
+export const prerender = true;
 ---
 
 <MainLayout title="Home Page">

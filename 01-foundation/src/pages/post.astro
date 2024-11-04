@@ -18,6 +18,8 @@ const { data, loading } = await client.query({
 });
 
 const postItems: Array<PostItem> = data.post;
+
+export const prerender = true;
 ---
 
 <MainLayout title="Post Page">
