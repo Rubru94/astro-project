@@ -1,24 +1,29 @@
 import type { APIRoute } from "astro";
 import { createYoga, createSchema } from "graphql-yoga";
-import { Posts } from "../../data/post";
+import { Post } from "../../server/post/models/post.model";
+import { dbConnection } from "../../server/core/db.config";
+
+dbConnection();
 
 const schema = createSchema({
   typeDefs: `
-    type PostItem {
-      id: Int!
+    type Post {
       title: String!
       description: String!
       author: String!
       published: Boolean!
     }
     type Query {
-      post: [PostItem!]
+      post: [Post!]
     }    
   `,
   resolvers: {
     Query: {
-      post: () => Posts,
+      post: () => {
+        return Post.find({});
+      },
     },
+    // Mutation: {},
   },
 });
 
