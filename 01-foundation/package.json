@@ -8,7 +8,13 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "serve": "node ./dist/server/entry.mjs"
+    "serve": "node ./dist/server/entry.mjs",
+    "start:pm2": "pm2 start npm --name 'astro-project' -- run start",
+    "stop:pm2": "pm2 stop 'astro-project'",
+    "restart:pm2": "pm2 restart 'astro-project'",
+    "delete:pm2": "pm2 delete 'astro-project'",
+    "list:pm2": "pm2 list",
+    "build-pro": "npm run start:pm2 && npm run build && npm run delete:pm2"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -21,5 +27,8 @@
     "mongoose": "^8.7.3",
     "typescript": "^5.6.3",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "pm2": "^5.4.2"
   }
 }

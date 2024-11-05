@@ -94,6 +94,17 @@ $ npm run serve
 $ ngrok tcp 27017
 ```
 
+## 💻 PM2 commands
+
+```bash
+npm run start:pm2 # Run app --> calling npm run start
+npm run stop:pm2 # Stop instance app 
+npm run start:pm2 # Restart instance app
+npm run start:pm2 # Remove instance app & release port
+npm run start:pm2 # Show app status
+```
+
+
 ## 📔 Bibliography & Links
 
 - [Astro docs](https://docs.astro.build/en/getting-started/)
