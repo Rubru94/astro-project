@@ -5,14 +5,17 @@
   "scripts": {
     "build": "tsc",
     "dev:server": "tsx watch src/server",
-    "dev:client": "wait-port 3000 && tsx watch src/client",
+    "dev:client": "wait-port 4321 && tsx watch src/client",
     "dev": "run-p dev:* --print-label",
-    "test-dev": "start-server-and-test 'tsx src/server' 3000 'tsx src/client'",
-    "test-start": "start-server-and-test 'node dist/server' 3000 'node dist/client'"
+    "test-dev": "start-server-and-test 'tsx src/server' 4321 'tsx src/client'",
+    "test-start": "start-server-and-test 'node dist/server' 4321 'node dist/client'"
   },
   "dependencies": {
     "@trpc/client": "npm:@trpc/client@next",
     "@trpc/server": "npm:@trpc/server@next",
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.0",
     "zod": "^3.0.0"
   },
   "devDependencies": {
