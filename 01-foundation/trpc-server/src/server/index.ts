@@ -11,6 +11,20 @@ const port = process.env.APP_PORT;
 
 const app = express();
 
+app.get("/", (req, res) => {
+  const htmlResponse = `
+    <html>
+      <head>
+        <title>NodeJs & Express in Vercel</title>
+      </head>
+      <body>
+        <h1>Backend running ...</h1>
+      </body>
+    </html>
+  `;
+  res.send(htmlResponse);
+});
+
 app.use(
   "/api/trpc",
   trpcExpress.createExpressMiddleware({
