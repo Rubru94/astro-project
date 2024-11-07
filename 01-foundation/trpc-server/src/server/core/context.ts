@@ -1,11 +1,10 @@
-//import { getUser } from "@astro-auth/core";
-import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
+import * as trpcExpress from "@trpc/server/adapters/express";
 
 export function createContext({
   req,
-  resHeaders,
-}: FetchCreateContextFnOptions) {
-  return { req, resHeaders };
+  res,
+}: trpcExpress.CreateExpressContextOptions) {
+  return { req, res };
 }
 
 export type Context = Awaited<ReturnType<typeof createContext>>;
