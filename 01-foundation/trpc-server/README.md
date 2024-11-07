@@ -1,4 +1,4 @@
-# A minimal working tRPC example
+# A minimal working tRPC server project
 
 Requires node 18 (for global fetch).
 
@@ -15,5 +15,11 @@ Try editing the ts files to see the type checking in action :)
 
 ```
 npm run build
-npm run start
+```
+
+## Serve
+
+```
+npm run serve:dev
+npm run serve:prod
 ```

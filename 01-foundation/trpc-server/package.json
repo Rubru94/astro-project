@@ -6,8 +6,8 @@
     "dev:server": "tsx watch src/server",
     "dev:client": "wait-port 3000 && tsx watch src/client",
     "dev": "run-p dev:* --print-label",
-    "serve:dev": "start-server-and-test 'tsx src/server' 3000 'tsx src/client'",
-    "serve:prod": "start-server-and-test 'node dist/server' 3000 'node dist/client'"
+    "serve:dev": "node start-server.js",
+    "serve:prod": "NODE_ENV=prod node start-server.js"
   },
   "dependencies": {
     "@trpc/client": "npm:@trpc/client@next",
