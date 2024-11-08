@@ -9,8 +9,6 @@ npm i
 npm run dev
 ```
 
-Try editing the ts files to see the type checking in action.
-
 ## Building
 
 ```
