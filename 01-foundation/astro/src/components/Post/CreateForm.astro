@@ -182,11 +182,11 @@
 </style>
 
 <script>
-  import { trpcAstro } from "../../client";
+  import { trpcClient } from "../../client/trpc";
 
   const createBtn = document.querySelector("#btn-create");
   createBtn?.addEventListener("click", async () => {
-    await trpcAstro.post.create.mutate({
+    await trpcClient.post.create.mutate({
       title: "Example",
       author: "Jonh Doe",
       description: "Description",
@@ -206,7 +206,7 @@
     const description = (
       document.querySelector("textarea") as HTMLTextAreaElement
     ).value;
-    await trpcAstro.post.create.mutate({
+    await trpcClient.post.create.mutate({
       title,
       author,
       description,

@@ -111,4 +111,3 @@ npm run start:pm2 # Show app status
 - [HTML 404 Page Templates](https://dev.to/stackfindover/35-html-404-page-templates-5bge)
 - [Using TRPC in Astro](https://www.thomasledoux.be/blog/using-trpc-astro-islands-react)
 - [Using MongoDB with Astro](https://itnext.io/using-mongodb-with-astro-5c9cf7f1be50)
-- 

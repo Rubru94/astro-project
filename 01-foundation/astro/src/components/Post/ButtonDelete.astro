@@ -84,7 +84,7 @@ const { id } = Astro.props;
 </style>
 
 <script>
-  import { trpcAstro } from "../../client";
+  import { trpcClient } from "../../client/trpc";
 
   const deleteBtns = document.querySelectorAll(".btn-delete");
   deleteBtns.forEach((btn) => {
@@ -92,7 +92,7 @@ const { id } = Astro.props;
       const id = (event.target as HTMLElement)?.getAttribute(
         "object-id"
       ) as string;
-      await trpcAstro.post.delete.mutate(id);
+      await trpcClient.post.delete.mutate(id);
       window.location.reload();
     });
   });

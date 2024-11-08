@@ -1,11 +1,12 @@
 ---
-import { trpcAstro } from "../../client";
+import { trpcClient } from "../../client/trpc";
 import ButtonDelete from "./ButtonDelete.astro";
 import CreateForm from "./CreateForm.astro";
+import type { IPost } from "../../../../trpc-server/src/server/post/interfaces/post.interface";
 
 const title = "Post Section";
 
-const posts = await trpcAstro.post.getAll.query();
+const posts: IPost[] = await trpcClient.post.getAll.query();
 ---
 
 <h3>{title}</h3>
@@ -135,11 +136,11 @@ const posts = await trpcAstro.post.getAll.query();
 </style>
 
 <script>
-  import { trpcAstro } from "../../client";
+  import { trpcClient } from "../../client/trpc";
 
-  const greeting = await trpcAstro.getHello.query("foo");
+  const greeting = await trpcClient.getHello.query("foo");
   console.log(greeting);
 
-  const posts = await trpcAstro.post.getAll.query();
+  const posts = await trpcClient.post.getAll.query();
   console.log(posts);
 </script>

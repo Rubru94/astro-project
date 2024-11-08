@@ -20,11 +20,9 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^8.3.4",
     "@astrojs/vercel": "^7.8.2",
-    "@trpc/client": "^10.45.2",
-    "@trpc/server": "^10.45.2",
+    "@trpc/client": "^11.0.0-rc.608",
+    "@trpc/server": "^11.0.0-rc.608",
     "astro": "^4.16.7",
-    "mongodb": "^6.10.0",
-    "mongoose": "^8.7.3",
     "typescript": "^5.6.3",
     "zod": "^3.23.8"
   },
