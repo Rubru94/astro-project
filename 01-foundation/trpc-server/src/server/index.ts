@@ -2,6 +2,7 @@
  * This a minimal tRPC server
  */
 import * as trpcExpress from "@trpc/server/adapters/express";
+import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import { createContext } from "./core/context";
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 app.use(
   "/api/trpc",
   trpcExpress.createExpressMiddleware({
+    middleware: cors(),
     router,
     createContext,
   })
