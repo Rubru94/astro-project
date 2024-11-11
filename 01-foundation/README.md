@@ -51,3 +51,4 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 [Astro docs](https://docs.astro.build/en/getting-started/)
 [HTML 404 Page Templates](https://dev.to/stackfindover/35-html-404-page-templates-5bge)
+[github - DevTalles-corp/astro-foundation](https://github.com/DevTalles-corp/astro-foundation/tree/fin-seccion-02)
